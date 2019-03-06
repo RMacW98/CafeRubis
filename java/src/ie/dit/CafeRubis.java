@@ -18,47 +18,26 @@ public class CafeRubis extends PApplet
 
     public void setup()
     {
-        
+        loadData();
+        // printProducts();
+    }
+
+    public void loadData()
+    {
+        Table table = loadTable("cafe.csv", "header");
+
+        for(int i = 0 ; i < table.getRowCount() ; i ++) { 
+            TableRow row = table.getRow(i);
+            System.out.println(row.getString("Name"));
+            System.out.println(row.getString("Price")); 
+        }
     }
 
     public void draw()
     {
 
     }
-}
 
-public class Product
-{
-    private String name;
-    private float price;
-
-    //Accessor
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-
-    public String getname()
-    {
-        return name;
-    }
-
-    public void setName(float price)
-    {
-        this.price = price;
-    }
-
-    public String getprice()
-    {
-        return price;
-    }
-
-    public product(TableRow row)
-    {
-        name = row.getString("Name");
-        price = row.getFloat("price");
-    }
-
-    public ArrayList<Product> products = new ArrayList<products>();
-    public ArrayList<Product> bill = new ArrayList<bill>();
+    public ArrayList<Product> products = new ArrayList<Product>();
+    public ArrayList<Product> bill = new ArrayList<Product>();
 }
